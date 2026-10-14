@@ -227,6 +227,9 @@ jobs:
             export CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER=x86_64-linux-android24-clang
             export CC_x86_64_linux_android=x86_64-linux-android24-clang
           fi
+          if [[ "${{ matrix.name }}" == android-* ]]; then
+            command -v aarch64-linux-android24-clang
+          fi
           if [ "${{ contains(matrix.cargo_targets, '-musl') }}" = "true" ]; then
             export RUSTFLAGS="${RUSTFLAGS:-} -C target-feature=+crt-static -C relocation-model=static -C link-arg=-static"
           fi
