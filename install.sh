@@ -13,12 +13,25 @@ else
     case $(uname -sm) in
     "Darwin x86_64") target="darwin-x86_64" ;;
     "Darwin arm64") target="darwin-aarch64" ;;
-    "Linux x86_64") target="linux-amd64" ;;
+    "Linux x86_64")
+        if [ -f /system/build.prop ]; then
+            target="android-x86_64"
+        else
+            target="linux-amd64"
+        fi
+        ;;
     "Linux arm64"|"Linux aarch64")
         if [ -f /system/build.prop ]; then
             target="android-aarch64"
         else
             target="linux-aarch64"
+        fi
+        ;;
+    "Linux armv7l"|"Linux armv7")
+        if [ -f /system/build.prop ]; then
+            target="android-armv7"
+        else
+            echo "Unsupported platform: $(uname -sm)" 1>&2; exit 1
         fi
         ;;
     *) echo "Unsupported platform: $(uname -sm)" 1>&2; exit 1 ;;

@@ -63,9 +63,9 @@ curl -fSsL https://vorc.s3.us-east-2.amazonaws.com/pigeons-install.sh | bash
 ### Android (Termux)
 
 pigeons runs on Android through [Termux](https://termux.dev). The install
-script detects the device and pulls the `android-aarch64` binary, which it
-installs into the Termux prefix. The phone is the client — add a route and
-SSH out as usual:
+script detects the device and its architecture, pulls the matching
+`android-*` binary, and installs it into the Termux prefix. The phone is
+the client — add a route and SSH out as usual:
 
 ```bash
 pigeons add --id bb8e1a5661a6dfa9ae2dd978922f30f524f6fd8c99b3de021c53f292aae74330 --name my-server
