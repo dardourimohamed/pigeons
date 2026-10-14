@@ -215,7 +215,7 @@ jobs:
           if [ "${{ matrix.name }}" = "android-aarch64" ]; then
             export PATH="$GITHUB_WORKSPACE/android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
             export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=aarch64-linux-android24-clang
-            export CC_aarch64-linux-android=aarch64-linux-android24-clang
+            export CC_aarch64_linux_android=aarch64-linux-android24-clang
           fi
           if [ "${{ matrix.name }}" = "android-armv7" ]; then
             export PATH="$GITHUB_WORKSPACE/android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
